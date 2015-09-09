@@ -1,10 +1,14 @@
 package com.example.sample;
 
 import com.android.library.json.JsonHelper;
+import com.android.library.picasso.DisplayConfig;
+import com.example.sample.adapterhelper.AdapterHelperActivity;
 import com.example.sample.bean.BaseBean;
 import com.example.sample.bean.StudentBean;
+import com.example.sample.pacisso.PacissoActivity;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -24,7 +28,8 @@ public class MainActivity extends Activity implements OnClickListener {
 	public void onClick(View view) {
 		switch (view.getId()) {
 		case R.id.btn_json:
-			jsonParse();
+			startActivity(new Intent(this, PacissoActivity.class));
+//			jsonParse();
 			break;
 		}
 	}
@@ -44,8 +49,9 @@ public class MainActivity extends Activity implements OnClickListener {
 
 		String baseString = JsonHelper.getInstance().parseString(base);
 		Log.e("jsonParse", "BaseBean:" + baseString);
-		
-		StudentBean s1 = JsonHelper.getInstance().parseObject(base.getData(), StudentBean.class);
+
+		StudentBean s1 = JsonHelper.getInstance().parseObject(base.getData(),
+				StudentBean.class);
 		s1.toString();
 	}
 
